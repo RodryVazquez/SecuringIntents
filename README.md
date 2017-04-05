@@ -236,7 +236,7 @@ La Activity IntentReceiverActivity quedaria de la siguiente manera:
         }
 ```
 
-Como podemos observar la Activity IntentReceiverActivity es la encargada de recibir la informacion desde el login pero para que se pueda comunicar con la Activity que contiene el login es necesario registrar el filtro del intent en el manifiesto de la aplicacion
+Como podemos observar la Activity IntentReceiverActivity es la encargada de recibir la informacion desde el login pero para que se pueda comunicar con la Activity que contiene el login es necesario registrar el filtro del intent en el manifiesto de la aplicacion._
 El manifiesto quedaria de la siguiente manera:
 
 ```xml
