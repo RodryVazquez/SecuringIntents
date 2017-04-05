@@ -9,7 +9,8 @@ En esta practica vamos a aprender a proteger los Intent Implicitos de aplicacion
 5. Construir un modulo interno el cual interceptara la informacion de un Intent
 
 ### Paso 1 - Crear un proyecto Android y utilizando el wizard crear una activity de nombre LoginActivity y el nombre del fichero
-         ### XML sera activity_login.xml
+             XML sera activity_login.xml
+
 
 
 
