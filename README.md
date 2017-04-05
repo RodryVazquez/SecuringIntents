@@ -1,5 +1,5 @@
 # Securing Intents
-En esta practica vamos a aprender a proteger los Intent Implicitos de aplicaciones que podrian tomar informacion sensible y comprometerla.
+En esta practica vamos a aprender a proteger los Intent Implicitos de aplicaciones que podrian contener informacion sensible y comprometerla.
 
 ### Objetivos de la practica
 1. Crear un login sencillo para fines del ejemplo
@@ -236,7 +236,8 @@ La Activity IntentReceiverActivity quedaria de la siguiente manera:
         }
 ```
 
-Como podemos observar la Activity IntentReceiverActivity es la encargada de recibir la informacion desde el login pero para que se pueda comunicar con la Activity que contiene el login es necesario registrar el filtro del intent en el manifiesto de la aplicacion._
+Como podemos observar la Activity IntentReceiverActivity es la encargada de recibir la informacion desde el login pero para que se pueda comunicar con la Activity que contiene el login es necesario registrar el filtro del intent en el manifiesto de la aplicacion.
+
 El manifiesto quedaria de la siguiente manera:
 
 ```xml
