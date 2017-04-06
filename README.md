@@ -328,7 +328,20 @@ Notaras que al intentar correr el proyecto HackApp no podra iniciar porque no he
 Bien ahora viene lo intesante si corremos la aplicacion la aplicacion que contiene nuestro Login y hacemos submit de la informacion podremos observar que nos aparece una pantalla que Android nos proporciona con las opciones de IntentReceiverActivity y MainActivity de HackApp las cuales nos ayudaran a completar la accion que esta definida en el Intent,
 si seleccionamos IntentReceiverActivity el flujo continuara normalmente hacia la Activity legitima de la aplicacion.
 
-Por otro lado en caso de seleccionar MainActivity notaras que esta disponible para leer el nombre de usuario y contraseña en un dialogo.
+Por otro lado en caso de seleccionar MainActivity notaras que esta disponible para leer los datos del nombre de usuario y contraseña y mostrarlos en un dialogo y comprometerlos.
+
+### Paso 5 - Parchear LoginApp
+
+En los pasos siguientes modificaremos LoginApp para aplicar los parches de seguridad encontrados previamente, La aplicacion HackApp no sera capaz de leer los datos del intent enviados por la aplicacion LoginApp incluso si la aplicacion LoginApp alimenta los datos del intent.
+Los pasos para resolver este hueco de seguridad seran:
+
+1. Ir a la aplicacion LoginApp y abrir LoginActivity
+2. Ir al metodo submitInfo y agregarle al intent y reemplazar el metodo de .SetAction por el metodo .SetClassName
+
+El metodo .SetClassName toma dos parametros, uno el paquete actual o dos el paquete al cual queremos dirigirnos, aplicando este sencillo cambio cambio la aplicacion LoginApp ignorara los filtros del intent y se dirigira a la Actividad legitima.
+
+
+
 
 
 

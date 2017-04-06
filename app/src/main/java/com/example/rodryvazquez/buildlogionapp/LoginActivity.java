@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         intent.setAction(ApplicationConstants.KEY_INTENT_ACTION_LOGIN);
         intent.addCategory(Intent.CATEGORY_DEFAULT);
         //Asignamos el className al intent y lo transformamos de Implicito a Explicito por lo que se ignora el Intent-Filter
-        intent.setClassName("com.example.rodryvazquez.buildlogionapp","com.example.rodryvazquez.buildlogionapp.IntentReceiverActivity");
+        //intent.setClassName("com.example.rodryvazquez.buildlogionapp","com.example.rodryvazquez.buildlogionapp.IntentReceiverActivity");
         startActivity(intent);
     }
 }
