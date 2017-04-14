@@ -1,7 +1,7 @@
 package com.example.rodryvazquez.buildlogionapp.Helpers;
 
 /**
- * TO DO comentarios
+ * Constantes
  */
 
 public class ApplicationConstants {
